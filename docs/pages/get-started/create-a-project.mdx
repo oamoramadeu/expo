@@ -1,24 +1,39 @@
----
-title: Create a project
-description: Learn how to create a new Expo project.
-hideTOC: true
----
+import React from 'react';
+import { View, Text, ScrollView, StyleSheet } from 'react-native';
 
-import { Terminal } from '~/ui/components/Snippet';
+export default function FeedScreen() {
+  return (
+    <View style={styles.container}>
+      <Text style={styles.header}>Feed</Text>
+      <ScrollView>
+        {[1, 2, 3].map((post, i) => (
+          <View key={i} style={styles.post}>
+            <Text style={styles.postText}>Postagem #{post}</Text>
+          </View>
+        ))}
+      </ScrollView>
+    </View>
+  );
+}
 
-System requirements:
-
-- [Node.js (LTS)](https://nodejs.org/en/).
-- macOS, Windows (Powershell and [WSL 2](https://expo.fyi/wsl)), and Linux are supported.
-
-We recommend starting with the default project created by `create-expo-app`. The default project includes example code to help you get started.
-
-To create a new project, run the following command:
-
-<Terminal cmd={['$ npx create-expo-app@latest']} />
-
-> You can choose a different template by adding the [`--template` option](/more/create-expo/#--template).
-
-## Next step
-
-You have a project. Now it's time to set up your development environment so that you can start developing.
+const styles = StyleSheet.create({
+  container: {
+    flex: 1,
+    backgroundColor: '#000',
+    padding: 20,
+  },
+  header: {
+    fontSize: 28,
+    color: '#fff',
+    marginBottom: 20,
+  },
+  post: {
+    backgroundColor: '#111',
+    borderRadius: 10,
+    padding: 15,
+    marginBottom: 15,
+  },
+  postText: {
+    color: '#fff',
+  },
+});
